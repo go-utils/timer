@@ -12,8 +12,8 @@ type testContext struct {
 	err error
 }
 
-// NewTestContext - constructor
-func NewTestContext() *testContext {
+// newTestContext - constructor
+func newTestContext() *testContext {
 	return &testContext{
 		Ch: make(chan struct{}),
 	}
@@ -60,7 +60,7 @@ func TestTimer(t *testing.T) {
 		{
 			name: "success",
 			args: args{
-				c: NewTestContext(),
+				c: newTestContext(),
 				d: 100 * time.Millisecond,
 				e: nil,
 				f: nil,
@@ -70,7 +70,7 @@ func TestTimer(t *testing.T) {
 		{
 			name: "success_done",
 			args: args{
-				c: NewTestContext(),
+				c: newTestContext(),
 				d: 100 * time.Second,
 				e: errors.New("test error"),
 				f: func(ctx *testContext) {
